@@ -1,4 +1,4 @@
-# Predator Ranking — Who Ruled the Earth?
+# Predator Ranking - Who Ruled the Earth?
 
 > *A data science pipeline that ranks every major vertebrate predator in geological history using fossil records, scientific literature, and AI-powered data extraction.*
 
@@ -54,20 +54,20 @@ This project is designed as a progressive learning roadmap. Each phase introduce
 
 Biomass consumed was considered and discarded no direct fossil data exists to calculate it without fabricating assumptions. Instead, the ranking uses four defensible metrics:
 
-1. **Body Mass Dominance** — Relative size estimated via RAG over scientific literature.
-2. **Temporal Dominance** — Duration of presence in the fossil record (millions of years).
-3. **Geographic Dominance** — Range of documented fossil occurrences across regions.
-4. **Ecological Terror Index** — Combined weighted score across the three metrics above.
+1. **Body Mass Dominance** - Relative size estimated via RAG over scientific literature.
+2. **Temporal Dominance** - Duration of presence in the fossil record (millions of years).
+3. **Geographic Dominance** - Range of documented fossil occurrences across regions.
+4. **Ecological Terror Index** - Combined weighted score across the three metrics above.
 
 ---
 
 ## Scope & Methodology
 
-**In scope:** Vertebrate megapredators — marine and terrestrial, fossil and modern.
+**In scope:** Vertebrate megapredators - marine and terrestrial, fossil and modern.
 
 Includes: Dinosauria, Chondrichthyes (sharks), Mosasauridae, Plesiosauria, Crocodylomorpha, Felidae, Cetacea, Placodermi, Boidae, Phorusrhacidae.
 
-**Out of scope:** Invertebrates and micro-predators. The scale difference makes cross-comparison ecologically meaningless — a different project entirely.
+**Out of scope:** Invertebrates and micro-predators. The scale difference makes cross-comparison ecologically meaningless a different project entirely.
 
 ---
 
@@ -97,7 +97,7 @@ predator_ranking/
 
 ## Author
 
-**Rozunii** — Data Science & AI student building at the intersection of science and storytelling.
+**Rozunii** Data Science & AI student building at the intersection of science and storytelling.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Rozunii-black?style=flat-square&logo=github)](https://github.com/Rozunii)
 
