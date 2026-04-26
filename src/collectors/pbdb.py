@@ -66,7 +66,7 @@ def obtener_carnivoros(grupo: str) -> list[dict]:
         if len(registros) < 500:
             break
         offset += 500
-        print(f" {grupo} - Offset: {offset} - Carnívoros encontrados: {len(my_list)}")
+        print(f" {grupo} - Offset: {offset} - Carnívoros encontrados: {len(my_list)}\n")
 
     return my_list
 
@@ -88,7 +88,7 @@ def obtener_todos() -> pd.DataFrame:
         print(f'Viendo: {grupo}')
         resultado = obtener_carnivoros(grupo)
         todos.extend(resultado)
-        print(f'{len(resultado)} generos encontrados')
+        print(f'{len(resultado)} generos encontrados\n')
     
     df = pd.DataFrame(todos)
     return df

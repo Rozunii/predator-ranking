@@ -10,14 +10,26 @@ Uso:
     python main.py
 """
 
+import os
+import pandas as pd
 from src.collectors import obtener_todos
+from src.processors import eliminar_duplicados, imputar_entorno
 
 def main():
     """Ejecuta el pipeline completo de recolección de datos."""
     print('Predator ranking')
 
-    df = obtener_todos()
-    df.to_csv('data/raw/pbdb_raw.csv', index=False)
+    if os.path.exists('data/raw/pbdb_raw.csv'):
+        df = pd.read_csv('data/raw/pbdb_raw.csv')
+    else: 
+        df = obtener_todos()
+        df.to_csv('data/raw/pbdb_raw.csv', index=False)
+
+
+    df = eliminar_duplicados(df)
+    df = imputar_entorno(df)
+
+    df.to_csv('data/processed/pbdb_clean.csv', index=False)
 
 if __name__ == '__main__':
     main()
