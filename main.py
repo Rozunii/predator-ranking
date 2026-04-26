@@ -13,7 +13,7 @@ Uso:
 import os
 import pandas as pd
 from src.collectors import obtener_todos
-from src.processors import eliminar_duplicados, imputar_entorno
+from src.processors import imputar_entorno_dieta
 
 def main():
     """Ejecuta el pipeline completo de recolección de datos."""
@@ -25,9 +25,7 @@ def main():
         df = obtener_todos()
         df.to_csv('data/raw/pbdb_raw.csv', index=False)
 
-
-    df = eliminar_duplicados(df)
-    df = imputar_entorno(df)
+    df = imputar_entorno_dieta(df)
 
     df.to_csv('data/processed/pbdb_clean.csv', index=False)
 

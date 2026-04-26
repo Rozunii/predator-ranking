@@ -5,44 +5,10 @@ Modulo para limpiar duplicados e imputar datos nulos en pbdb_raw.csv.
 """
 
 import pandas as pd
-
-ENTORNO_POR_CLASE = {
-    'Reptilia': 'terrestrial',
-    'Aves': 'terrestrial',
-    'Chondrichthyes': 'marine',
-    'Mammalia': 'terrestrial',
-    'Placodermi': 'marine',
-    'Saurischia': 'terrestrial'
-}
-
-def eliminar_duplicados(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Elimina géneros duplicados conservando el registro más antiguo.
-
-    Cuando un género aparece en más de un grupo taxonómico,
-    se conserva la ocurrencia con mayor Primera_aparicion,
-    ya que representa el registro fósil más completo.
-
-    Args:
-        df: DataFrame crudo con posibles duplicados en Nombre.
-
-    Returns:
-        DataFrame sin duplicados en columna Nombre.
-    """ 
-
-    df['Duracion_Ma'] = df['Primera_aparicion'] - df['Ultima_aparicion']
-
-    antes = len(df)
-
-    df = df.sort_values('Duracion_Ma', ascending=False)
-    df = df.drop_duplicates(subset='Nombre', keep='first')
-
-    print(f'Dimensiones del dataset antes: {antes} - Dimensiones del dataset despues: {len(df)}\n')
-
-    return df
+from src import config
 
 
-def imputar_entorno(df: pd.DataFrame) -> pd.DataFrame:
+def imputar_entorno_dieta(df: pd.DataFrame) -> pd.DataFrame:
     """
     Imputa el entorno respecto a la clase a los datos nulos en la columna Entorno.
 
@@ -56,6 +22,9 @@ def imputar_entorno(df: pd.DataFrame) -> pd.DataFrame:
         DataFrame sin nulos en columna Entorno.
     """
     nulos = df.isna().sum()
-    df['Entorno'] = df['Entorno'].fillna(df['Clase'].map(ENTORNO_POR_CLASE))
+    df['Entorno'] = df['Entorno'].fillna(df['Clase'].map(config.ENTORNO_POR_CLASE))
+    for especie, entorno in config.ENTORNO_EXCEPCIONES.items():
+        df.loc[df['Nombre'] == especie, 'Entorno'] = entorno
+    df['Dieta'] = df['Dieta'].fillna('carnivore')
     print(f'Nulos antes:\n{nulos}\n \nNulos despues:\n{df.isna().sum()}\n')
     return df

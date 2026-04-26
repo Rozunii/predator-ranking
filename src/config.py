@@ -176,3 +176,21 @@ ESPECIES_MODERNAS = [
     ("Python reticulatus", "Pythonidae", "Reptilia"),
     ("Ophiophagus hannah", "Elapidae", "Reptilia"),
 ]
+
+ENTORNO_POR_CLASE = {
+    'Reptilia': 'terrestrial',
+    'Aves': 'terrestrial',
+    'Chondrichthyes': 'marine',
+    'Mammalia': 'terrestrial',
+    'Placodermi': 'marine',
+    'Saurischia': 'terrestrial',
+    'Invertebrado': 'marine',
+    'Sarcopterygii': 'marine',
+    'Actinopterygii': 'marine'
+}
+
+ENTORNO_EXCEPCIONES = {
+    'Arthropleura armata': 'terrestrial',
+    'Jaekelopterus rhenaniae': 'freshwater',
+    'Pentecopterus decorahensis': 'marine',
+}

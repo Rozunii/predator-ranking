@@ -7,4 +7,4 @@ Módulos disponibles:
     cleaner: Limpieza y imputación del dataset crudo de PBDB.
 """
 
-from .cleaner import eliminar_duplicados, imputar_entorno
+from .cleaner import imputar_entorno_dieta
