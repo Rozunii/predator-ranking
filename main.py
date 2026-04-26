@@ -14,6 +14,7 @@ import os
 import pandas as pd
 from src.collectors import obtener_todos
 from src.processors import imputar_entorno_dieta
+from src.collectors import obtener_modernos
 
 def main():
     """Ejecuta el pipeline completo de recolección de datos."""
@@ -27,6 +28,9 @@ def main():
 
     df = imputar_entorno_dieta(df)
 
+    df_pantheria = obtener_modernos('data/raw/PanTHERIA_1-0_WR93_Aug2008.txt')
+
+    df_pantheria.to_csv('data/raw/pantheria_raw.csv', index=False)
     df.to_csv('data/processed/pbdb_clean.csv', index=False)
 
 if __name__ == '__main__':
