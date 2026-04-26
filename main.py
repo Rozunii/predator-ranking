@@ -13,7 +13,7 @@ Uso:
 import os
 import pandas as pd
 from src.collectors import obtener_todos
-from src.processors import imputar_entorno_dieta
+from src.processors import imputar_entorno_dieta, limpiar_pantheria
 from src.collectors import obtener_modernos
 
 def main():
@@ -28,10 +28,14 @@ def main():
 
     df = imputar_entorno_dieta(df)
 
+    df.to_csv('data/processed/pbdb_clean.csv', index=False)
+
     df_pantheria = obtener_modernos('data/raw/PanTHERIA_1-0_WR93_Aug2008.txt')
 
     df_pantheria.to_csv('data/raw/pantheria_raw.csv', index=False)
-    df.to_csv('data/processed/pbdb_clean.csv', index=False)
+    df_pantheria = limpiar_pantheria(df_pantheria)
+
+    df_pantheria.to_csv('data/processed/pantheria_clean.csv', index=False)
 
 if __name__ == '__main__':
     main()
