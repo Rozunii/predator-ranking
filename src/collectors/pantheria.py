@@ -27,11 +27,10 @@ def obtener_modernos(filepath: str) -> pd.DataFrame:
     """
 
     df_modernos = pd.read_csv(filepath, sep='\t')
-    df_modernos = df_modernos[['MSW93_Genus', 'MSW93_Order', 'MSW93_Binomial', '5-1_AdultBodyMass_g', '6-2_TrophicLevel', '26-1_GR_Area_km2', '18-1_BasalMetRate_mLO2hr']]
+    df_modernos = df_modernos[['MSW93_Genus', 'MSW93_Binomial', '5-1_AdultBodyMass_g', '6-2_TrophicLevel', '26-1_GR_Area_km2', '18-1_BasalMetRate_mLO2hr']]
 
     df_modernos = df_modernos.rename(columns={
     'MSW93_Binomial': 'Nombre',
-    'MSW93_Order': 'Grupo',
     '5-1_AdultBodyMass_g': 'Masa_g',
     '6-2_TrophicLevel': 'Nivel_trofico',
     '26-1_GR_Area_km2': 'Rango_geografico_km2',

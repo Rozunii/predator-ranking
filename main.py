@@ -12,9 +12,8 @@ Uso:
 
 import os
 import pandas as pd
-from src.collectors import obtener_todos
+from src.collectors import obtener_todos, obtener_modernos, obtener_modernos_aves
 from src.processors import imputar_entorno_dieta, limpiar_pantheria
-from src.collectors import obtener_modernos
 
 def main():
     """Ejecuta el pipeline completo de recolección de datos."""
@@ -36,6 +35,11 @@ def main():
     df_pantheria = limpiar_pantheria(df_pantheria)
 
     df_pantheria.to_csv('data/processed/pantheria_clean.csv', index=False)
+
+    df_elton = obtener_modernos_aves('data/raw/BirdFuncDat.txt')
+
+    df_elton.to_csv('data/raw/elton_raw.csv', index=False)
+    
 
 if __name__ == '__main__':
     main()

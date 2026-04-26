@@ -8,3 +8,4 @@ Módulos disponibles:
 """
 from .pbdb import obtener_todos
 from .pantheria import obtener_modernos
+from .eltontraits import obtener_modernos_aves
