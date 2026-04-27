@@ -9,3 +9,4 @@ Módulos disponibles:
 
 from .cleaner import imputar_entorno_dieta, limpiar_pantheria
 from .merger import merge_data
+from .enricher import enriquecer_modernos, imputar_dieta_modernos

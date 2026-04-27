@@ -13,7 +13,7 @@ Uso:
 import os
 import pandas as pd
 from src.collectors import obtener_todos, obtener_modernos, obtener_modernos_aves
-from src.processors import imputar_entorno_dieta, limpiar_pantheria, merge_data
+from src.processors import imputar_entorno_dieta, limpiar_pantheria, merge_data, enriquecer_modernos, imputar_dieta_modernos
 
 def main():
     """Ejecuta el pipeline completo de recolección de datos."""
@@ -43,6 +43,11 @@ def main():
 
     df_master = merge_data(df, df_pantheria, df_elton)
     df_master.to_csv('data/processed/master_raw.csv', index=False)
+
+    df_master = enriquecer_modernos(df_master)
+    df_master = imputar_dieta_modernos(df_master)
+
+    df_master.to_csv('data/processed/master_clean.csv', index=False)
 
 if __name__ == '__main__':
     main()
