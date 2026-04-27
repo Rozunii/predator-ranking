@@ -8,3 +8,4 @@ Módulos disponibles:
 """
 
 from .cleaner import imputar_entorno_dieta, limpiar_pantheria
+from .merger import merge_data
