@@ -50,13 +50,30 @@ def imputar_dieta_modernos(df: pd.DataFrame) -> pd.DataFrame:
         DataFrame con Dieta imputada y columna Nivel_trofico eliminada.
     """
     dietas = {
-        1: 'herviboro',
-        2: 'omnivoro',
-        3: 'carnivoro'
+        1: 'hervibore',
+        2: 'omnivore',
+        3: 'carnivore'
     }
 
     df['Dieta'] = df['Dieta'].fillna(df['Nivel_trofico'].map(dietas))
     df = df.drop(columns=['Nivel_trofico'])
     df['Dieta'] = df['Dieta'].replace('VertFishScav', 'carnivore')
 
+    return df
+
+def corregir_errores(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Modifica la dieta erronea de algunos animales en el dataset.
+
+    Args:
+        df: DataFrame maestro con columna Nivel_trofico de PanTHERIA.
+
+    Returns:
+        DataFrame con Dieta imputada y columna Nivel_trofico eliminada.
+    """
+    for especie, dieta in config.DIETA_EXCEPCIONES.items():
+        df.loc[df['Nombre'] == especie, 'Dieta'] = dieta
+    
+    df = df.drop(columns=['Genero'], errors='ignore')
+    
     return df

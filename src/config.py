@@ -186,11 +186,28 @@ ENTORNO_POR_CLASE = {
     'Saurischia': 'terrestrial',
     'Invertebrado': 'marine',
     'Sarcopterygii': 'marine',
-    'Actinopterygii': 'marine'
+    'Actinopterygii': 'marine',
 }
 
 ENTORNO_EXCEPCIONES = {
     'Arthropleura armata': 'terrestrial',
     'Jaekelopterus rhenaniae': 'freshwater',
     'Pentecopterus decorahensis': 'marine',
+    'Mosasaurus hoffmannii': 'marine',
+    'Tylosaurus proriger': 'marine',
+    'Prognathodon saturator': 'marine',
+    'Hainosaurus bernardi': 'marine',
+    'Hatzegopteryx thambema': 'terrestrial',
+    'Pteranodon longiceps': 'terrestrial',
+    'Tropeognathus mesembrinus': 'terrestrial',
+    'Livyatan melvillei': 'marine',
+    'Brygmophyseter shigensis': 'marine'
+}
+
+DIETA_EXCEPCIONES = {
+    'Andrewsarchus mongoliensis': 'carnivore',
+    'Thylacoleo carnifex': 'carnivore',
+    'Megistotherium osteothlastes': 'carnivore',
+    'Arctodus simus': 'carnivore',
+    'Arctotherium angustidens': 'carnivore'
 }
