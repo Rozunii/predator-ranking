@@ -1,10 +1,10 @@
 venv/
 data/raw/
 data/processed/
-data/vectordb/
 .env
 __pycache__/
 *.pyc
 *.pyo
 .ipynb_checkpoints/
 .vscode/
+data/vectordb/
