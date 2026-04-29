@@ -14,6 +14,7 @@ import os
 import pandas as pd
 from src.collectors import obtener_todos, obtener_modernos, obtener_modernos_aves
 from src.processors import imputar_entorno_dieta, limpiar_pantheria, merge_data, enriquecer_modernos, imputar_dieta_modernos
+from src.rag import obtener_textos, inicializar_db, indexar_textos, extraer_masa_corporal
 
 def main():
     """Ejecuta el pipeline completo de recolección de datos."""
@@ -48,6 +49,24 @@ def main():
     df_master = imputar_dieta_modernos(df_master)
 
     df_master.to_csv('data/processed/master_clean.csv', index=False)
+
+    chroma = inicializar_db()
+    sin_masa = df_master[df_master['Masa_g'].isnull()]['Nombre'].to_list()
+
+    for especie in sin_masa:
+        textos = obtener_textos(especie)
+        indexar_textos(chroma, especie, textos)
+        masa = extraer_masa_corporal(chroma, especie)
+
+        if masa != 'NO_ENCONTRADO':
+            try: 
+                df_master.loc[df_master['Nombre'] == especie, 'Masa_g'] = float(masa.split()[0])
+            except: 
+                print(f'  [{especie}] No se pudo convertir: {masa}')
+
+    df_master.to_csv('data/processed/master_clean.csv', index=False)
+    print(f'\nMaster dataset actualizado: {df_master["Masa_g"].isnull().sum()} especies sin masa corporal')
+
 
 if __name__ == '__main__':
     main()
