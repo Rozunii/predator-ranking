@@ -1,6 +1,7 @@
 venv/
 data/raw/
 data/processed/
+data/vectordb/
 .env
 __pycache__/
 *.pyc
